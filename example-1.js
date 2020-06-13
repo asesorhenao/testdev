@@ -2,7 +2,20 @@ import {createAll, cleanConsole} from './data';
 const companies = createAll();
 
 cleanConsole(1, companies);
-console.log('---- EXAMPLE 1 --- ', 'Put here your function');
+console.log('---- EXAMPLE 1 --- ', replacingValues(companies));
+
+function replacingValues(data) {
+  return data.map((company) => {
+    company.users = company.users.map((user) => {
+      Object.keys(user).map(function(key, index) {
+        user[key] = user[key] || '';
+      });
+      return user;
+    });
+    company.name = company.name[0].toUpperCase() + company.name.slice(1);
+    return company;
+  });
+};
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
