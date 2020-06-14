@@ -2,19 +2,29 @@ import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
 cleanConsole(2, companies);
-console.log('---- EXAMPLE 2 --- ', replacingValues(companies));
 
-function replacingValues(data) {
-  return data.map((company) => {
-    company.users = company.users.map((user) => {
-      Object.keys(user.car).map(function(key, index) {
-        user[key] = user[key] || '';
-      });
-      return user;
-    });
-    return company;
-  });
-};
+const valids = hasCar(companies, true);
+console.log('---- EXAMPLE 2 --- ', valids);
+
+function hasCar(companies, hasCar) {
+  return companies
+      .map((comp) => getHasCarCompany(comp, hasCar));
+}
+
+function getHasCarCompany(company, hasCar) {
+  return {
+    ...company,
+    users: getHasCarUser(company.users, hasCar),
+  };
+}
+
+function getHasCarUser(users, hasCar) {
+  return users
+      .map((user) => ({
+        ...user,
+      }));
+}
+
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
