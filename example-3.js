@@ -3,20 +3,54 @@ import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
 cleanConsole(3, companies);
-console.log('---- EXAMPLE 3 --- ', replacingValues(companies));
 
-function replacingValues(data) {
-  return data.map((company) => {
-    company.users = company.users.map((user) => {
-      Object.keys(user).map(function(key, index) {
-        user[key] = user[key] || '';
-      });
-      return user;
-    });
-    company.name = company.name[0].toUpperCase() + company.name.slice(1);
-    return company;
-  });
-};
+const valids = getValidCompanies(companies);
+
+console.log('---- EXAMPLE 3 --- ', valids);
+
+function getValidCompanies(companies) {
+  return companies
+      .map((comp) => getValidCompany(comp))
+      .sort((a, b) => a.users.length - b.users.length)
+      .reverse();
+}
+
+function getValidCompany(company) {
+  return {
+    ...company,
+    name: capitalize(company.name),
+    users: getValidUsers(company.users),
+  };
+}
+
+function getValidUsers(users) {
+  return users
+      .map((user) => ({
+        ...user,
+        firstName: capitalize(user.firstName),
+        lastName: capitalize(user.lastName),
+      }))
+      .sort((a, b) => compareAlphabetical(a, b));
+}
+
+function capitalize(str) {
+  if (typeof str !== 'string') return '';
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function compareAlphabetical(a, b) {
+  const nameA = getFullName(a).toUpperCase();
+  const nameB = getFullName(b).toUpperCase();
+  if (nameA < nameB) return -1;
+  if (nameA > nameB) return 1;
+  return 0;
+}
+
+function getFullName(a) {
+  return `${a.firstName} ${a.lastName}`;
+}
+
+
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL

@@ -3,26 +3,21 @@ const companies = createAll();
 
 cleanConsole(2, companies);
 
-const valids = hasCar(companies, true);
+const valids = getCompanies(companies);
 console.log('---- EXAMPLE 2 --- ', valids);
 
-function hasCar(companies, hasCar) {
+function getCompanies(companies) {
   return companies
-      .map((comp) => getHasCarCompany(comp, hasCar));
+      .map((comp) => getHasCar(comp, true));
 }
 
-function getHasCarCompany(company, hasCar) {
+function getHasCar(company, hasCar) {
+  const usersCar= company.users.filter((user) => user.car === hasCar);
   return {
     ...company,
-    users: getHasCarUser(company.users, hasCar),
+    users: usersCar,
+    usersLength: usersCar.length,
   };
-}
-
-function getHasCarUser(users, hasCar) {
-  return users
-      .map((user) => ({
-        ...user,
-      }));
 }
 
 
