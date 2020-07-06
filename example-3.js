@@ -4,53 +4,24 @@ const companies = createAll();
 
 cleanConsole(3, companies);
 
-const valids = getValidCompanies(companies);
+const functionExample1 = require('./example-1');
+
+const valids = functionExample1.getValidCompanies(companies);
 
 console.log('---- EXAMPLE 3 --- ', valids);
+console.log('Capitalized Names: ', isCapitalizeNames(valids));
 
-function getValidCompanies(companies) {
-  return companies
-      .map((comp) => getValidCompany(comp))
-      .sort((a, b) => a.users.length - b.users.length)
-      .reverse();
+function isCapitalizeNames(companies) {
+  return companies.every((company) => isCapitalize(company.name) && isCapitalizeNamesUsers(company.users));
 }
 
-function getValidCompany(company) {
-  return {
-    ...company,
-    name: capitalize(company.name),
-    users: getValidUsers(company.users),
-  };
+function isCapitalizeNamesUsers(users) {
+  return users.every((user) => isCapitalize(user.firstName) && isCapitalize(user.lastName));
 }
 
-function getValidUsers(users) {
-  return users
-      .map((user) => ({
-        ...user,
-        firstName: capitalize(user.firstName),
-        lastName: capitalize(user.lastName),
-      }))
-      .sort((a, b) => compareAlphabetical(a, b));
+function isCapitalize(str) {
+  return str.charAt(0) === str.charAt(0).toUpperCase();
 }
-
-function capitalize(str) {
-  if (typeof str !== 'string') return '';
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-function compareAlphabetical(a, b) {
-  const nameA = getFullName(a).toUpperCase();
-  const nameB = getFullName(b).toUpperCase();
-  if (nameA < nameB) return -1;
-  if (nameA > nameB) return 1;
-  return 0;
-}
-
-function getFullName(a) {
-  return `${a.firstName} ${a.lastName}`;
-}
-
-
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL

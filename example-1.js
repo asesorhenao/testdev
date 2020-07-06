@@ -56,6 +56,10 @@ function getFullName(a) {
   return `${a.firstName} ${a.lastName}`;
 }
 
+module.exports = {
+  getValidCompanies,
+};
+
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL

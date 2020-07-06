@@ -12,7 +12,7 @@ function getCompanies(companies) {
 }
 
 function getHasCar(company, hasCar) {
-  const usersCar= company.users.filter((user) => user.car === hasCar);
+  const usersCar = company.users.filter((user) => user.car === hasCar);
   return {
     ...company,
     users: usersCar,
