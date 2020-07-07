@@ -2,7 +2,19 @@ import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
 cleanConsole(4, companies);
-console.log('---- EXAMPLE 4 --- ', 'Put here your function');
+console.log('---- EXAMPLE 4 --- ', getCompanies(companies));
+
+function getCompanies(companies) {
+  const newTableUsers = companies.map((comp) => getNewTableUsers(comp.users, comp.name));
+  return [].concat(...newTableUsers)
+      .sort((a, b) => a.age - b.age)
+      .reverse();
+}
+
+function getNewTableUsers(users, nameCompany) {
+  return users
+      .map((user) => ({...user, company: nameCompany}));
+}
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
