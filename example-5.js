@@ -2,8 +2,47 @@ import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
 cleanConsole(5, companies);
-console.log('---- EXAMPLE 5 --- ', 'Put here your function');
 
+const functionExample4 = require('./example-4');
+
+const valids = functionExample4.getCompanies(companies);
+
+console.log('---- EXAMPLE 5 --- ', newObjectAtributes(valids));
+
+function newObjectAtributes(users) {
+  return {
+    size: users.length,
+    average: averageAge(users),
+    hasCar: hasCarUsers(users),
+    averageWithCar: averageAgeUsersWithCar(users),
+  };
+}
+
+function averageAge(user) {
+  let sumAge = 0;
+  user.forEach((el, i) => {
+    sumAge += el.age;
+  });
+  return parseInt(sumAge / user.length);
+}
+
+function hasCarUsers(user) {
+  let sumHasCar = 0;
+  user.forEach((el, i) => {
+    if (el.car === true) sumHasCar ++;
+  });
+  return sumHasCar;
+}
+
+function averageAgeUsersWithCar(user) {
+  let sumAge = 0;
+  user.forEach((el, i) => {
+    if (el.car === true) {
+      sumAge += el.age;
+    }
+  });
+  return parseInt(sumAge / user.length);
+}
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
 

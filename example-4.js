@@ -16,6 +16,10 @@ function getNewTableUsers(users, nameCompany) {
       .map((user) => ({...user, company: nameCompany}));
 }
 
+module.exports = {
+  getCompanies,
+};
+
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
 
