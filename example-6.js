@@ -3,7 +3,21 @@ import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
 cleanConsole(6, companies);
-console.log('---- EXAMPLE 6 --- ', 'Put here your function');
+console.log('---- EXAMPLE 6 --- ', getNewObjectAttributes(companies));
+
+function getNewObjectAttributes(companies) {
+  const newObjectUsers = companies.map((company) => getNewObjectUsers(company.users));
+  return [].concat(...newObjectUsers);
+}
+
+function getNewObjectUsers(users) {
+  return users.map((user) => {
+    return {
+      [user.lastName + user.firstName + user.age]: user.car,
+    };
+  });
+}
+
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
