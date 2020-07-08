@@ -5,9 +5,9 @@ cleanConsole(5, companies);
 
 const functionExample4 = require('./example-4');
 
-const valids = functionExample4.getCompanies(companies);
+const newObjectAttibutes = functionExample4.getCompanies(companies);
 
-console.log('---- EXAMPLE 5 --- ', newObjectAtributes(valids));
+console.log('---- EXAMPLE 5 --- ', newObjectAtributes(newObjectAttibutes));
 
 function newObjectAtributes(users) {
   return {
@@ -18,30 +18,30 @@ function newObjectAtributes(users) {
   };
 }
 
-function averageAge(user) {
+function averageAge(users) {
   let sumAge = 0;
-  user.forEach((el, i) => {
+  users.forEach((el, i) => {
     sumAge += el.age;
   });
-  return parseInt(sumAge / user.length);
+  return parseInt(sumAge / users.length);
 }
 
-function hasCarUsers(user) {
+function hasCarUsers(users) {
   let sumHasCar = 0;
-  user.forEach((el, i) => {
+  users.forEach((el, i) => {
     if (el.car === true) sumHasCar ++;
   });
   return sumHasCar;
 }
 
-function averageAgeUsersWithCar(user) {
+function averageAgeUsersWithCar(users) {
   let sumAge = 0;
-  user.forEach((el, i) => {
+  users.forEach((el, i) => {
     if (el.car === true) {
       sumAge += el.age;
     }
   });
-  return parseInt(sumAge / user.length);
+  return parseInt(sumAge / users.length);
 }
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
