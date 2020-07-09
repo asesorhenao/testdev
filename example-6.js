@@ -7,7 +7,10 @@ console.log('---- EXAMPLE 6 --- ', getNewObjectAttributes(companies));
 
 function getNewObjectAttributes(companies) {
   const newObjectUsers = companies.map((company) => getNewObjectUsers(company.users));
-  return [].concat(...newObjectUsers);
+  return [].concat(...newObjectUsers).reduce((obj, user) => {
+    obj[`${Object.keys(user)[0]}`] = Object.values(user)[0];
+    return obj;
+  }, {});
 }
 
 function getNewObjectUsers(users) {

@@ -3,7 +3,7 @@ import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
 cleanConsole(7, companies);
-console.log('---- EXAMPLE 7 part 1 --- ', 'Put here your function');
+console.log('---- EXAMPLE 7 part 1 --- ', searchNameCompany(companies, 3));
 console.log('---- EXAMPLE 7 part 2 --- ', 'Put here your function');
 console.log('---- EXAMPLE 7 part 3 --- ', 'Put here your function');
 console.log('---- EXAMPLE 7 part 4 --- ', 'Put here your function');
@@ -12,6 +12,10 @@ console.log('---- EXAMPLE 7 part 6 --- ', 'Put here your function');
 console.log('---- EXAMPLE 7 part 7 --- ', 'Put here your function');
 console.log('---- EXAMPLE 7 part 8 --- ', 'Put here your function');
 console.log('---- EXAMPLE 7 part 9 --- ', 'Put here your function');
+
+function searchNameCompany(companies, id) {
+  return companies.find((company) => company.id === id).name;
+}
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
