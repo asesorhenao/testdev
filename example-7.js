@@ -26,32 +26,26 @@ function makePatch(companies) {
 }
 
 function getNewCompaniesUsers(companies, id) {
-  return companies.map((comp) => {
-    if (comp.id === id) {
-      getNewCompanyUser(comp.users);
-    }
-  });
-}
-
-function getNewCompanyUser(company) {
-  const newUser = getNewUser(company.users, 'Juan', 'Delgado', 35);
+  const newUsersCompany = companies.find((company) => company.id === id);
+  const newId = newUsersCompany.usersLength;
+  newUsersCompany.users
+      .push({
+        firstName: 'Juan',
+        lastName: 'Delgado',
+        age: 35,
+        car: true,
+        id: newId,
+      });
   return {
-    ...company,
-    users: newUser,
-    usersLength: newUser.length,
+    name: newUsersCompany.name,
+    users: newUsersCompany.users,
+    isOpen: newUsersCompany.isOpen,
+    usersLength: newUsersCompany.users.length,
+    id: newUsersCompany.id,
   };
 }
 
-function getNewUser(users, firstName, lastName, age) {
-  users.firstName = firstName,
-  users.lastName = lastName,
-  users.age = age,
-  users.car = true,
-  users.id = parseInt(Math.random() * 100);
-  return users.map((user) => ({
-    ...user,
-  }));
-}
+
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
 

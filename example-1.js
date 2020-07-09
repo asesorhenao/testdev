@@ -3,10 +3,10 @@ const companies = createAll();
 
 cleanConsole(1, companies);
 
-const valids = getValidCompanies(companies);
+const validsCompanies = getValidCompanies(companies);
 
-console.log('---- EXAMPLE 1 --- ', valids);
-console.log(getStr(valids));
+console.log('---- EXAMPLE 1 --- ', validsCompanies);
+console.log(getStr(validsCompanies));
 
 function getStr(arr) {
   return arr.map((c) => {

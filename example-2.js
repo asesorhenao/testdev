@@ -3,8 +3,8 @@ const companies = createAll();
 
 cleanConsole(2, companies);
 
-const valids = getCompanies(companies);
-console.log('---- EXAMPLE 2 --- ', valids);
+const validsHasCar = getCompanies(companies);
+console.log('---- EXAMPLE 2 --- ', validsHasCar);
 
 function getCompanies(companies) {
   return companies
