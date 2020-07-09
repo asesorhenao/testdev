@@ -4,7 +4,7 @@ const companies = createAll();
 
 cleanConsole(7, companies);
 console.log('---- EXAMPLE 7 part 1 --- ', searchNameCompany(companies, 3));
-console.log('---- EXAMPLE 7 part 2 --- ', 'Put here your function');
+console.log('---- EXAMPLE 7 part 2 --- ', removingCompany(companies, 3));
 console.log('---- EXAMPLE 7 part 3 --- ', 'Put here your function');
 console.log('---- EXAMPLE 7 part 4 --- ', 'Put here your function');
 console.log('---- EXAMPLE 7 part 5 --- ', 'Put here your function');
@@ -15,6 +15,10 @@ console.log('---- EXAMPLE 7 part 9 --- ', 'Put here your function');
 
 function searchNameCompany(companies, id) {
   return companies.find((company) => company.id === id).name;
+}
+
+function removingCompany(companies, id) {
+  return companies.filter((company) => company.id != id);
 }
 
 // -----------------------------------------------------------------------------
