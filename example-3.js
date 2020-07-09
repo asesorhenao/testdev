@@ -12,11 +12,13 @@ console.log('---- EXAMPLE 3 --- ', valids);
 console.log('Capitalized Names: ', isCapitalizeNames(valids));
 
 function isCapitalizeNames(companies) {
-  return companies.every((company) => isCapitalize(company.name) && isCapitalizeNamesUsers(company.users));
+  return companies
+      .every((company) => isCapitalize(company.name) && isCapitalizeNamesUsers(company.users));
 }
 
 function isCapitalizeNamesUsers(users) {
-  return users.every((user) => isCapitalize(user.firstName) && isCapitalize(user.lastName));
+  return users
+      .every((user) => isCapitalize(user.firstName) && isCapitalize(user.lastName));
 }
 
 function isCapitalize(str) {

@@ -4,9 +4,9 @@ const companies = createAll();
 
 cleanConsole(7, companies);
 console.log('---- EXAMPLE 7 part 1 --- ', searchNameCompany(companies, 3));
-console.log('---- EXAMPLE 7 part 2 --- ', removingCompany(companies, 3));
-console.log('---- EXAMPLE 7 part 3 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 4 --- ', 'Put here your function');
+console.log('---- EXAMPLE 7 part 2 --- ', removingCompany(companies, 2));
+console.log('---- EXAMPLE 7 part 3 --- ', makePatch(companies));
+console.log('---- EXAMPLE 7 part 4 --- ', getNewCompaniesUsers(companies, 0));
 console.log('---- EXAMPLE 7 part 5 --- ', 'Put here your function');
 console.log('---- EXAMPLE 7 part 6 --- ', 'Put here your function');
 console.log('---- EXAMPLE 7 part 7 --- ', 'Put here your function');
@@ -21,6 +21,37 @@ function removingCompany(companies, id) {
   return companies.filter((company) => company.id != id);
 }
 
+function makePatch(companies) {
+  return 'PATCH';
+}
+
+function getNewCompaniesUsers(companies, id) {
+  return companies.map((comp) => {
+    if (comp.id === id) {
+      getNewCompanyUser(comp.users);
+    }
+  });
+}
+
+function getNewCompanyUser(company) {
+  const newUser = getNewUser(company.users, 'Juan', 'Delgado', 35);
+  return {
+    ...company,
+    users: newUser,
+    usersLength: newUser.length,
+  };
+}
+
+function getNewUser(users, firstName, lastName, age) {
+  users.firstName = firstName,
+  users.lastName = lastName,
+  users.age = age,
+  users.car = true,
+  users.id = parseInt(Math.random() * 100);
+  return users.map((user) => ({
+    ...user,
+  }));
+}
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
 
