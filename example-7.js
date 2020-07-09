@@ -7,11 +7,11 @@ console.log('---- EXAMPLE 7 part 1 --- ', searchNameCompany(companies, 3));
 console.log('---- EXAMPLE 7 part 2 --- ', removingCompany(companies, 2));
 console.log('---- EXAMPLE 7 part 3 --- ', makePatch(companies));
 console.log('---- EXAMPLE 7 part 4 --- ', getNewCompaniesUsers(companies, 0));
-console.log('---- EXAMPLE 7 part 5 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 6 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 7 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 8 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 9 --- ', 'Put here your function');
+console.log('---- EXAMPLE 7 part 5 --- ', makePut(companies));
+console.log('---- EXAMPLE 7 part 6 --- ', removeUserCompany(companies, 1, 0));
+console.log('---- EXAMPLE 7 part 7 --- ', makePatch2(companies));
+console.log('---- EXAMPLE 7 part 8 --- ', makePut2(companies));
+console.log('---- EXAMPLE 7 part 9 --- ', transferUserCompanies(companies, 1, 2, 2));
 
 function searchNameCompany(companies, id) {
   return companies.find((company) => company.id === id).name;
@@ -45,6 +45,52 @@ function getNewCompaniesUsers(companies, id) {
   };
 }
 
+function makePut(companies) {
+  return 'PUT';
+}
+
+function removeUserCompany(companies, idCompany, idUser) {
+  const company = companies.find((comp) => comp.id === idCompany);
+  const companyUsers = company.users.filter((user) => user.id != idUser);
+  return {
+    name: company.name,
+    users: companyUsers,
+    isOpen: company.isOpen,
+    usersLength: companyUsers.length,
+    id: company.id,
+  };
+}
+
+function makePatch2(companies) {
+  return 'PATCH 2';
+}
+
+function makePut2(companies) {
+  return 'PUT 2';
+}
+
+function transferUserCompanies(companies, idCompany1, idCompany2, idUser) {
+  const company1 = companies.find((company) => company.id === idCompany1);
+  const company2 = companies.find((company) => company.id === idCompany2);
+  const transferUser = company1.users.find((user) => user.id === idUser);
+  company2.users.push(transferUser);
+  const usersCompany1 = company1.users.filter((user) => user.id != idUser);
+  const objectCompany1 = {
+    name: company1.name,
+    users: usersCompany1,
+    isOpen: company1.isOpen,
+    usersLength: usersCompany1.length,
+    id: company1.id,
+  };
+  const objectCompany2 = {
+    name: company2.name,
+    users: company2.users,
+    isOpen: company2.isOpen,
+    usersLength: company2.users.length,
+    id: company2.id,
+  };
+  return [].concat(objectCompany1, objectCompany2);
+}
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
